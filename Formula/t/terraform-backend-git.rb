@@ -15,10 +15,10 @@ class TerraformBackendGit < Formula
 
   def install
     system "go", "build",
-           *std_go_args(ldflags: "X github.com/plumber-cd/terraform-backend-git/cmd.Version=#{version}")
+           *std_go_args(ldflags: "-X 'github.com/plumber-cd/terraform-backend-git/cmd.Version=#{version}'")
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/terraform-backend-git --version 2>&1")
+    assert_match version.to_s, shell_output("#{bin}/terraform-backend-git version 2>&1")
   end
 end
