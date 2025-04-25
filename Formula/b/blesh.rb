@@ -6,8 +6,6 @@ class Blesh < Formula
   license "BSD-3-Clause"
   head "https://github.com/akinomyoga/ble.sh.git", branch: "master"
 
-  version = "0.4.0"
-
   livecheck do
     url :stable
     strategy :github_latest
