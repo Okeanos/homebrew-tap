@@ -14,7 +14,7 @@ class TerraformBackendGit < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", "-mod=vendor",
+    system "go", "build",
            *std_go_args(ldflags: "X github.com/plumber-cd/terraform-backend-git/cmd.Version=#{version}")
   end
 
