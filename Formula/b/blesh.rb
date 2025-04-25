@@ -27,7 +27,7 @@ class Blesh < Formula
   end
 
   depends_on "make"
-  depends_on "awk"
+  depends_on "gawk"
 
   option "without-docs", "Disable documentation files"
 
