@@ -4,7 +4,7 @@ class TerraformBackendGit < Formula
   url "https://github.com/plumber-cd/terraform-backend-git/archive/refs/tags/v0.1.8.tar.gz"
   sha256 "96499b4d98cd2337e96f256e79b91f6249f0d57374962296109bf4baae76cd7a"
   license "Apache-2.0"
-  head "https://github.com/plumber-cd/terraform-backend-git.git", branch: "main"
+  head "https://github.com/plumber-cd/terraform-backend-git.git"
 
   livecheck do
     url :stable
