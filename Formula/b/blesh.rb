@@ -33,7 +33,7 @@ class Blesh < Formula
     args = []
     args << "INSDIR_DOC=no" if build.with? "without-docs"
 
-    system "make" "install", "INSDIR=#{share}", *args
+    system "make", "install", "INSDIR=#{share}", *args
   end
 
   test do
