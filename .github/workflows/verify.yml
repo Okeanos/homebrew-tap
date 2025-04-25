@@ -16,10 +16,6 @@ on:
         description: Run Gitleaks (Secret scanner)
         default: true
         type: boolean
-      hadolint:
-        description: Run hadolint (Dockerfile linter)
-        default: false
-        type: boolean
       lychee:
         description: Run lychee (Broken link finder)
         default: true
@@ -96,15 +92,6 @@ jobs:
           echo "${GITLEAKS_SHASUM} gitleaks.tar.gz" | sha256sum --check
           tar -xzf gitleaks.tar.gz gitleaks
           ./gitleaks dir --verbose --redact .
-  hadolint:
-    runs-on: ubuntu-latest
-    if: ${{ inputs.hadolint || false }}
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf # v3.1.0
-        with:
-          dockerfile: "Dockerfile"
   lychee:
     runs-on: ubuntu-latest
     if: ${{ inputs.lychee || true }}
