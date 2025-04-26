@@ -1,22 +1,22 @@
 class Blesh < Formula
-  desc "Bash Line Editor―a line editor written in pure Bash with syntax highlighting, auto suggestions, vim modes, etc. for Bash interactive sessions."
+  desc "A Bash line editor with syntax highlighting, auto suggestions, etc"
   homepage "https://github.com/akinomyoga/ble.sh"
   url "https://github.com/akinomyoga/ble.sh.git",
       tag: "v0.4.0-devel3",
       revision: "1a5c451c8baa71439a6be4ea0f92750de35a7620"
+  version "0.4.0"
   license "BSD-3-Clause"
   head "https://github.com/akinomyoga/ble.sh.git", branch: "master"
-  version "0.4.0"
 
   livecheck do
     url :stable
     strategy :github_latest
   end
 
-  keg_only "blesh needs to be manually setup via .bashrc inclusion."
+  keg_only "blesh needs to be manually setup via .bashrc inclusion"
 
-  depends_on "make" => :build
   depends_on "gawk" => :build
+  depends_on "make" => :build
 
   option "without-docs", "Disable documentation files"
 
