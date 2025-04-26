@@ -1,8 +1,7 @@
 class Blesh < Formula
   desc "Bash Line Editor―a line editor written in pure Bash with syntax highlighting, auto suggestions, vim modes, etc. for Bash interactive sessions."
   homepage "https://github.com/akinomyoga/ble.sh"
-  url "https://github.com/akinomyoga/ble.sh/archive/refs/tags/v0.4.0-devel3.tar.gz", tag: "v0.4.0-devel3", revision: "1a5c451c8baa71439a6be4ea0f92750de35a7620"
-  sha256 "867ec9681bd75de7faa93622bcae1b705f561c11d83a62ead1f14554b87630dc"
+  url "https://github.com/akinomyoga/ble.sh.git", tag: "v0.4.0-devel3", revision: "1a5c451c8baa71439a6be4ea0f92750de35a7620"
   license "BSD-3-Clause"
   head "https://github.com/akinomyoga/ble.sh.git", branch: "master"
 
