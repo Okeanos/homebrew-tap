@@ -13,7 +13,7 @@ class Blesh < Formula
     strategy :github_latest
   end
 
-  keg_only "blesh needs to be manually setup via .bashrc inclusion"
+  keg_only "ble.sh needs to be manually setup via .bashrc inclusion"
 
   option "without-docs", "Disable documentation files"
 
@@ -30,7 +30,7 @@ class Blesh < Formula
 
   def caveats
     <<~EOS
-      To setup blesh add the following to your .bashrc or .bash_profile:
+      To setup ble.sh add the following to your .bashrc or .bash_profile:
         [[ $- == *i* ]] && source #{opt_prefix}/bin/ble.sh --noattach
 
         # your bashrc settings come here...
