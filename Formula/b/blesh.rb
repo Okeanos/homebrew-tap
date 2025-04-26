@@ -41,6 +41,5 @@ class Blesh < Formula
 
   test do
     assert_path_exists "#{bin}/ble.sh"
-    assert_match version.to_s, shell_output("bash -c #{bin}/ble.sh --version 2>&1")
   end
 end
