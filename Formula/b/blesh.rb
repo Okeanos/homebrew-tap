@@ -1,8 +1,8 @@
 class Blesh < Formula
-  desc "A Bash line editor with syntax highlighting, auto suggestions, etc"
+  desc "Bash line editor with syntax highlighting, auto suggestions, etc"
   homepage "https://github.com/akinomyoga/ble.sh"
   url "https://github.com/akinomyoga/ble.sh.git",
-      tag: "v0.4.0-devel3",
+      tag:      "v0.4.0-devel3",
       revision: "1a5c451c8baa71439a6be4ea0f92750de35a7620"
   version "0.4.0"
   license "BSD-3-Clause"
@@ -15,10 +15,10 @@ class Blesh < Formula
 
   keg_only "blesh needs to be manually setup via .bashrc inclusion"
 
+  option "without-docs", "Disable documentation files"
+
   depends_on "gawk" => :build
   depends_on "make" => :build
-
-  option "without-docs", "Disable documentation files"
 
   def install
     args = []
