@@ -12,22 +12,10 @@ class Blesh < Formula
     strategy :github_latest
   end
 
-  keg_only "ble.ssh needs to be manually setup via .bashrc inclusion. It is useless on the PATH."
+  keg_only "blesh needs to be manually setup via .bashrc inclusion."
 
-  def caveats
-    <<~EOS
-      # Add this line at the top of your .bashrc:
-      [[ $- == *i* ]] && source #{bin}/blesh/ble.sh --noattach
-
-      # your bashrc settings come here...
-
-      # Add this line at the end of .bashrc:
-      [[ ! ${BLE_VERSION-} ]] || ble-attach
-    EOS
-  end
-
-  depends_on "make"
-  depends_on "gawk"
+  depends_on "make" => :build
+  depends_on "gawk" => :build
 
   option "without-docs", "Disable documentation files"
 
@@ -36,6 +24,18 @@ class Blesh < Formula
     args << "INSDIR_DOC=no" if build.with? "without-docs"
 
     system "make", "install", "INSDIR=#{bin}", *args
+  end
+
+  def caveats
+    <<~EOS
+      To setup blesh add the following to your .bashrc or .bash_profile:
+        [[ $- == *i* ]] && source #{bin}/blesh/ble.sh --noattach
+
+        # your bashrc settings come here...
+
+        # Add this line at the end of .bashrc:
+        [[ ! ${BLE_VERSION-} ]] || ble-attach
+    EOS
   end
 
   test do
