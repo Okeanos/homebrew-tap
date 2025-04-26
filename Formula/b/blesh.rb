@@ -25,13 +25,13 @@ class Blesh < Formula
     args = []
     args << "INSDIR_DOC=no" if build.with? "without-docs"
 
-    system "make", "install", "INSDIR=#{bin}", *args
+    system "make", "install", "INSDIR=#{pkgshare}/blesh", *args
   end
 
   def caveats
     <<~EOS
       To setup ble.sh add the following to your .bashrc or .bash_profile:
-        [[ $- == *i* ]] && source #{opt_prefix}/bin/ble.sh --noattach
+        [[ $- == *i* ]] && source #{opt_prefix}/share/blesh/ble.sh --noattach
 
         # your bashrc settings come here...
 
@@ -41,6 +41,6 @@ class Blesh < Formula
   end
 
   test do
-    assert_path_exists "#{bin}/ble.sh"
+    assert_path_exists "#{pkgshare}/blesh/ble.sh"
   end
 end
