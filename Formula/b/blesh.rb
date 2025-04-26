@@ -30,7 +30,7 @@ class Blesh < Formula
   def caveats
     <<~EOS
       To setup blesh add the following to your .bashrc or .bash_profile:
-        [[ $- == *i* ]] && source #{bin}/blesh/ble.sh --noattach
+        [[ $- == *i* ]] && source #{bin}/ble.sh --noattach
 
         # your bashrc settings come here...
 
@@ -41,6 +41,6 @@ class Blesh < Formula
 
   test do
     assert_path_exists "#{bin}/ble.sh"
-    assert_match version.to_s, shell_output("bash -c #{bin}/ble-sh --version 2>&1")
+    assert_match version.to_s, shell_output("bash -c #{bin}/ble.sh --version 2>&1")
   end
 end
