@@ -25,7 +25,7 @@ class Blesh < Formula
     args = []
     args << "INSDIR_DOC=no" if build.with? "without-docs"
 
-    system "make", "install", "INSDIR=#{pkgshare}/blesh", *args
+    system "make", "install", "INSDIR=#{pkgshare}", *args
   end
 
   def caveats
@@ -41,6 +41,6 @@ class Blesh < Formula
   end
 
   test do
-    assert_path_exists "#{pkgshare}/blesh/ble.sh"
+    assert_path_exists "#{pkgshare}/ble.sh"
   end
 end
