@@ -17,6 +17,7 @@ class Blesh < Formula
 
   option "without-docs", "Disable documentation files"
 
+  depends_on "bash" => :recommended
   depends_on "gawk" => :build
   depends_on "make" => :build
 
