@@ -30,7 +30,7 @@ class Blesh < Formula
   def caveats
     <<~EOS
       To setup blesh add the following to your .bashrc or .bash_profile:
-        [[ $- == *i* ]] && source #{bin}/ble.sh --noattach
+        [[ $- == *i* ]] && source #{opt_prefix}/bin/ble.sh --noattach
 
         # your bashrc settings come here...
 
