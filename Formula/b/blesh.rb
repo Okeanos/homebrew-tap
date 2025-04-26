@@ -1,5 +1,5 @@
 class Blesh < Formula
-  desc "Bash line editor with syntax highlighting, auto suggestions, etc"
+  desc "ble.sh is a Bash line editor with syntax highlighting, auto suggestions, etc"
   homepage "https://github.com/akinomyoga/ble.sh"
   url "https://github.com/akinomyoga/ble.sh.git",
       tag:      "v0.4.0-devel3",
@@ -13,7 +13,7 @@ class Blesh < Formula
     strategy :github_latest
   end
 
-  keg_only "ble.sh needs to be manually setup via .bashrc inclusion"
+  keg_only "ble.sh needs to be manually setup via .bashrc/.bash_profile inclusion"
 
   option "without-docs", "Disable documentation files"
 
@@ -31,11 +31,11 @@ class Blesh < Formula
   def caveats
     <<~EOS
       To setup ble.sh add the following to your .bashrc or .bash_profile:
-        [[ $- == *i* ]] && source #{opt_prefix}/share/blesh/ble.sh --noattach
+        [[ $- == *i* ]] && source #{opt_prefix}/share/#{name}/ble.sh --noattach
 
         # your bashrc settings come here...
 
-        # Add this line at the end of .bashrc:
+        # Add this line at the end of .bashrc or .bash_profile:
         [[ ! ${BLE_VERSION-} ]] || ble-attach
     EOS
   end
