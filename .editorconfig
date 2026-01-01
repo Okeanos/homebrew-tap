@@ -12,7 +12,7 @@ indent_style = tab # https://old.reddit.com/r/javascript/comments/c8drjo/nobody_
 indent_size = tab
 trim_trailing_whitespace = true
 
-[*.{md,rb,tf,yaml,yml}]
+[*.{md,tf,yaml,yml}]
 indent_style = space
 indent_size = 2
 
@@ -28,3 +28,6 @@ trim_trailing_whitespace = false # Allow '  ' token for Markdown to create new l
 #max_line_length = 140
 
 # Add custom rules below
+[*.rb]
+indent_style = space
+indent_size = 2
