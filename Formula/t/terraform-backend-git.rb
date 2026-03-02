@@ -1,8 +1,8 @@
 class TerraformBackendGit < Formula
   desc "Terraform HTTP Backend implementation that uses Git repository as storage"
   homepage "https://github.com/plumber-cd/terraform-backend-git"
-  url "https://github.com/plumber-cd/terraform-backend-git/archive/refs/tags/v0.1.8.tar.gz"
-  sha256 "96499b4d98cd2337e96f256e79b91f6249f0d57374962296109bf4baae76cd7a"
+  url "https://github.com/plumber-cd/terraform-backend-git/archive/refs/tags/v0.1.10.tar.gz"
+  sha256 "a130bb688fe825388d55d2a5f0ad7f9a4affdb40963a2d43d4abb4095830396d"
   license "Apache-2.0"
   head "https://github.com/plumber-cd/terraform-backend-git.git", branch: "master"
 
