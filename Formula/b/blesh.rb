@@ -26,7 +26,7 @@ class Blesh < Formula
   def install
     vars = %W[
       PREFIX=""
-      DESTDIR=#{opt_prefix}
+      DESTDIR=#{prefix}
     ]
     ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
     system "make", *vars, "install"
