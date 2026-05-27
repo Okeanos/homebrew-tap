@@ -21,8 +21,8 @@ class Blesh < Formula
 
   def install
     vars = %W[
-      PREFIX=#{prefix}
-      INSDIR_LICENSE=#{prefix}
+      PREFIX=#{pkgshare}
+      INSDIR_LICENSE=#{pkgshare}
     ]
     ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
     system "make", *vars, "install"
@@ -35,13 +35,8 @@ class Blesh < Formula
 
   def caveats
     <<~EOS
-      To setup ble.sh add the following to your .bashrc or .bash_profile:
-        [[ $- == *i* ]] && source #{HOMEBREW_PREFIX}/share/#{name}/ble.sh --noattach
-
-        # your bashrc settings come here...
-
-        # Add this line at the end of .bashrc or .bash_profile:
-        [[ ! ${BLE_VERSION-} ]] || ble-attach
+      The ble.sh script is installed as
+        #{opt_prefix/"share/blesh/ble.sh"}
     EOS
   end
 
