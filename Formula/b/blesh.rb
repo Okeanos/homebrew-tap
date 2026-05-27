@@ -25,7 +25,7 @@ class Blesh < Formula
 
   def install
     vars = %W[
-      INSDIR=#{pkgshare}
+      INSDIR=#{opt_share}
     ]
     ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
     system "make", *vars, "install"
@@ -34,16 +34,16 @@ class Blesh < Formula
   def caveats
     <<~EOS
       The ble.sh script is installed as
-        #{pkgshare/"blesh/ble.sh"}
+        #{opt_pkgshare/"ble.sh"}
     EOS
   end
 
   test do
-    system "bash", pkgshare/"blesh/ble.sh", "--help"
+    system "bash", opt_pkgshare/"ble.sh", "--help"
 
     # In absence of $HOME/.cache, `ble.sh --lib` tries and fails to create files
-    # in #{pkgshare}/blesh/cache.d, which is outside of the test sandbox.
+    # in #{opt_pkgshare}/blesh/cache.d, which is outside of the test sandbox.
     (testpath/".cache").mkdir
-    system "bash", pkgshare/"blesh/ble.sh", "--lib"
+    system "bash", opt_pkgshare/"ble.sh", "--lib"
   end
 end
