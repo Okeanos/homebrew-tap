@@ -27,10 +27,10 @@ class Blesh < Formula
     ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
     system "make", *vars, "install"
 
-    cd share/"doc/blesh" do
+    cd pkgshare/"doc/blesh" do
       prefix.install_metafiles
     end
-    rm_r share/"doc"
+    rm_r pkgshare/"doc"
   end
 
   def caveats
