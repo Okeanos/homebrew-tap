@@ -22,15 +22,9 @@ class Blesh < Formula
   def install
     vars = %W[
       PREFIX=#{pkgshare}
-      INSDIR_LICENSE=#{pkgshare}
     ]
     ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
     system "make", *vars, "install"
-
-    cd pkgshare/"doc/blesh" do
-      prefix.install_metafiles
-    end
-    rm_r pkgshare/"doc"
   end
 
   def caveats
