@@ -4,34 +4,39 @@ class Blesh < Formula
   url "https://github.com/akinomyoga/ble.sh.git",
       tag:      "v0.4.0-devel3",
       revision: "1a5c451c8baa71439a6be4ea0f92750de35a7620"
-  version "0.4.0"
+  version "0.4.0-devel3"
   license "BSD-3-Clause"
   head "https://github.com/akinomyoga/ble.sh.git", branch: "master"
 
   livecheck do
     url :stable
+    regex(/^v?(\d+(?:\.\d+)+(?:-devel\d+)?)$/i) # allows a "-develN" suffix
     strategy :github_latest
   end
 
   keg_only "ble.sh needs to be manually setup via .bashrc/.bash_profile inclusion"
 
-  option "without-docs", "Disable documentation files"
-
   depends_on "gawk" => :build
-  depends_on "make" => :build
   depends_on "bash" => :recommended
 
   def install
-    args = []
-    args << "INSDIR_DOC=no" if build.with? "without-docs"
+    vars = %W[
+      PREFIX=#{prefix}
+      INSDIR_LICENSE=#{prefix}
+    ]
+    ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
+    system "make", *vars, "install"
 
-    system "make", "install", "INSDIR=#{pkgshare}", *args
+    cd share/"doc/blesh" do
+      prefix.install_metafiles
+    end
+    rm_r share/"doc"
   end
 
   def caveats
     <<~EOS
       To setup ble.sh add the following to your .bashrc or .bash_profile:
-        [[ $- == *i* ]] && source #{opt_prefix}/share/#{name}/ble.sh --noattach
+        [[ $- == *i* ]] && source #{HOMEBREW_PREFIX}/share/#{name}/ble.sh --noattach
 
         # your bashrc settings come here...
 
@@ -41,6 +46,11 @@ class Blesh < Formula
   end
 
   test do
-    assert_path_exists "#{pkgshare}/ble.sh"
+    system "bash", share/"blesh/ble.sh", "--help"
+
+    # In absence of $HOME/.cache, `ble.sh --lib` tries and fails to create files
+    # in #{share}/blesh/cache.d, which is outside of the test sandbox.
+    (testpath/".cache").mkdir
+    system "bash", share/"blesh/ble.sh", "--lib"
   end
 end
