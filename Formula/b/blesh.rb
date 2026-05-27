@@ -19,9 +19,13 @@ class Blesh < Formula
   depends_on "gawk" => :build
   depends_on "bash" => :recommended
 
+  # See https://docs.brew.sh/Formula-Cookbook#variables-for-directory-locations
+  # for how/when/why variables were picked based on the recommendations by the
+  # ble.sh author in https://github.com/akinomyoga/ble.sh/discussions/578
+
   def install
     vars = %W[
-      PREFIX=#{pkgshare}
+      INSDIR=#{pkgshare}
     ]
     ENV.deparallelize # to address https://github.com/akinomyoga/ble.sh/issues/689
     system "make", *vars, "install"
@@ -30,16 +34,16 @@ class Blesh < Formula
   def caveats
     <<~EOS
       The ble.sh script is installed as
-        #{opt_prefix/"share/blesh/ble.sh"}
+        #{pkgshare/"blesh/ble.sh"}
     EOS
   end
 
   test do
-    system "bash", share/"blesh/ble.sh", "--help"
+    system "bash", pkgshare/"blesh/ble.sh", "--help"
 
     # In absence of $HOME/.cache, `ble.sh --lib` tries and fails to create files
-    # in #{share}/blesh/cache.d, which is outside of the test sandbox.
+    # in #{pkgshare}/blesh/cache.d, which is outside of the test sandbox.
     (testpath/".cache").mkdir
-    system "bash", share/"blesh/ble.sh", "--lib"
+    system "bash", pkgshare/"blesh/ble.sh", "--lib"
   end
 end
