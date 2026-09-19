@@ -1,5 +1,5 @@
 class Blesh < Formula
-  desc "ble.sh is a Bash line editor with syntax highlighting, auto suggestions, etc"
+  desc "Bash line editor with syntax highlighting, auto suggestions, etc"
   homepage "https://github.com/akinomyoga/ble.sh"
   url "https://github.com/akinomyoga/ble.sh.git",
       tag:      "v0.4.0-devel3",
